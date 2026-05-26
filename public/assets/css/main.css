@@ -1,0 +1,160 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#c7c5c5;
+    overflow:hidden;
+}
+
+.wrapper{
+    display:flex;
+    min-height:calc(100vh - 78px);
+}
+
+/* SIDEBAR */
+
+.sidebar{
+    width:260px;
+    background:linear-gradient(to bottom,#343434,#2f2f2f);
+    padding:20px;
+}
+
+.logo-area{
+    display:flex;
+    align-items:flex-start;
+    gap:15px;
+    margin-bottom:55px;
+}
+
+.scissor{
+    color:#26c8ff;
+    font-size:50px;
+}
+
+.brand h2{
+    color:white;
+    font-size:28px;
+    font-weight:800;
+    line-height:1;
+}
+
+.brand h4{
+    color:white;
+    font-size:18px;
+    font-weight:700;
+}
+
+.menu{
+    list-style:none;
+}
+
+.menu li{
+    margin-bottom:45px;
+}
+
+.menu a{
+    color:white;
+    text-decoration:none;
+    font-size:18px;
+    font-weight:600;
+    display:flex;
+    align-items:center;
+    gap:20px;
+    transition:.3s;
+}
+
+.menu a i{
+    color:#29c8ff;
+    font-size:24px;
+    width:30px;
+}
+
+.menu a:hover{
+    color:#29c8ff;
+}
+
+/* CONTENT */
+
+.content{
+    flex:1;
+    padding:25px 35px;
+}
+
+.topbar{
+    display:flex;
+    justify-content:flex-end;
+}
+
+.topbar i{
+    font-size:42px;
+}
+
+.page-title{
+    text-align:center;
+    font-size:92px;
+    font-weight:800;
+    margin-top:70px;
+    margin-bottom:40px;
+}
+
+.welcome-box{
+    width:92%;
+    margin:auto;
+    background:#f2f2f2;
+    padding:55px;
+    border-radius:45px;
+}
+
+.welcome-box h3{
+    font-size:28px;
+    margin-bottom:10px;
+}
+
+.welcome-box p{
+    font-size:24px;
+    font-weight:600;
+}
+
+/* FOOTER */
+
+.footer{
+    height:78px;
+    background:#313131;
+    display:flex;
+    justify-content:space-around;
+    align-items:center;
+    color:white;
+}
+
+.foot-item{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    font-size:14px;
+}
+
+.foot-item i{
+    color:#29c8ff;
+    font-size:38px;
+}
+
+.title{
+    text-align:center;
+    font-size:60px;
+    margin-top:40px;
+    margin-bottom:40px;
+}
+
+.welcome-box{
+    width:80%;
+    background:white;
+    padding:30px;
+    border-radius:25px;
+    margin:auto;
+}
