@@ -3,27 +3,34 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Admin;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
-    // tampil login
     public function login()
     {
         return view('backend.auth.login');
     }
 
-    // proses login sementara
     public function authenticate(Request $request)
     {
-        $email = $request->email;
-        $password = $request->password;
+        $admin = Admin::where('email', $request->email)->first();
 
-        // login sementara hardcode
-        if($email == 'admin@gmail.com' && $password == '12345'){
-            return redirect('/dashboard');
+        if (!$admin) {
+            return back()->with('error', 'Email tidak ditemukan');
         }
 
-        return back()->with('error','Email atau Password salah');
+        if (!Hash::check($request->password, $admin->password)) {
+            return back()->with('error', 'Password salah');
+        }
+
+        session([
+            'admin_id' => $admin->id,
+            'admin_name' => $admin->nama_admin,
+        ]);
+
+        return redirect('/dashboard');
     }
 }

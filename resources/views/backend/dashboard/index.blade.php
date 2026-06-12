@@ -2,11 +2,9 @@
 
 @section('content')
 
-<h1 class="title">HAI GIO!</h1>
+<h1>HAI {{ strtoupper($nama) }}!</h1>
 
-<div class="welcome-box">
-    <h4>Selamat datang, Gio</h4>
-    <p>Kamu memiliki hak akses Super Admin</p>
-</div>
+<p>Selamat datang, {{ $nama }}</p>
+<p>Kamu memiliki hak akses Super Admin</p>
 
 @endsection

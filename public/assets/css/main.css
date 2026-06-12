@@ -9,12 +9,13 @@
 
 body{
     background:#c7c5c5;
-    overflow:hidden;
+    overflow-y:auto;
 }
 
 .wrapper{
     display:flex;
     min-height:calc(100vh - 78px);
+    height:auto;
 }
 
 /* SIDEBAR */

@@ -6,9 +6,12 @@
     <title>Hayvan Backend</title>
 
     <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
+    @stack('css')
 
     <link rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 </head>
 <body>
 
@@ -30,26 +33,26 @@
 
         <ul class="menu">
 
-            <li>
-                <a href="#">
-                    <i class="fa-solid fa-house"></i>
-                    BERANDA
-                </a>
-            </li>
+                <li>
+            <a href="/dashboard">
+                <i class="fa-solid fa-house"></i>
+                BERANDA
+            </a>
+        </li>
 
-            <li>
-                <a href="#">
-                    <i class="fa-solid fa-user"></i>
-                    USER
-                </a>
-            </li>
+        <li>
+            <a href="/user">
+                <i class="fa-solid fa-user"></i>
+                USER
+            </a>
+        </li>
 
-            <li>
-                <a href="#">
-                    <i class="fa-solid fa-hand-sparkles"></i>
-                    LAYANAN
-                </a>
-            </li>
+        <li>
+            <a href="/layanan">
+                <i class="fa-solid fa-hand-sparkles"></i>
+                LAYANAN
+            </a>
+        </li>
 
         </ul>
 
@@ -106,6 +109,7 @@
     </div>
 
 </footer>
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+@stack('js')
 </body>
 </html>
