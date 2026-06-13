@@ -8,21 +8,21 @@ return new class extends Migration
 {
     public function up(): void
     {
+        // 🟢 Diubah menjadi 'layanan' (tanpa S) sesuai foreign key tabel booking
         Schema::create('layanan', function (Blueprint $table) {
             $table->id();
-
-            $table->string('nama_layanan');
-            $table->text('deskripsi')->nullable();
+            // 🟢 Diubah menjadi 'layanan' sesuai dengan kolom yang ada di database kamu
+            $table->string('layanan'); 
             $table->integer('harga');
-            $table->integer('durasi');
-            $table->string('foto')->nullable();
-
+            $table->string('durasi');
+            $table->string('status')->default('Aktif');
             $table->timestamps();
         });
     }
 
     public function down(): void
     {
+        // 🟢 Diubah juga di sini agar pas di-rollback tidak error
         Schema::dropIfExists('layanan');
     }
 };

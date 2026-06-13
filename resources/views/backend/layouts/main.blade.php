@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hayvan Backend</title>
+    <title>Hayvan Barber.id</title>
+    <
 
     <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
     @stack('css')
@@ -96,7 +97,7 @@
         <i class="fa-solid fa-phone"></i>
         <div>
             <b>HUBUNGI KAMI</b><br>
-            08xx-xxxx-xxxx
+            0838-1155-9114  
         </div>
     </div>
 

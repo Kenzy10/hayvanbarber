@@ -15,6 +15,7 @@ return new class extends Migration
                 ->constrained('pelanggan')
                 ->cascadeOnDelete();
 
+
             $table->foreignId('layanan_id')
                 ->constrained('layanan')
                 ->cascadeOnDelete();
@@ -33,7 +34,6 @@ return new class extends Migration
 
             $table->date('tanggal_booking');
             $table->time('jam_booking');
-
             $table->integer('total_harga')->nullable();
 
             $table->enum('status_booking', [
@@ -44,7 +44,6 @@ return new class extends Migration
             ])->default('pending');
 
             $table->text('catatan')->nullable();
-
             $table->timestamps();
         });
     }
@@ -54,4 +53,3 @@ return new class extends Migration
         Schema::dropIfExists('booking');
     }
 };
-

@@ -11,10 +11,9 @@
 
     <div class="user-card">
 
-        <div class="user-header">
-            <a href="{{ route('user.create') }}" class="btn-tambah">
-                <i class="fas fa-plus-circle"></i>
-                Tambah
+        <div style="margin-bottom: 25px;">
+            <a href="{{ route('layanan.create') }}" style="background: white; border: 1.5px solid black; border-radius: 20px; padding: 6px 18px; font-size: 14px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; text-decoration: none; color: black;">
+                <span style="font-size: 14px;">+</span> Tambah User
             </a>
         </div>
 
@@ -33,13 +32,13 @@
             </thead>
 
             <tbody>
-               @foreach($users as $index => $user)
+                @foreach($users as $index => $user)
                 <tr>
                     <td>{{ $users->firstItem() + $index }}</td>
                     <td>{{ $user->email }}</td>
                     <td>{{ $user->nama_admin }}</td>
 
-                   <td>
+                    <td>
                         <span class="badge-role">
                             {{ $user->role }}
                         </span>
@@ -52,24 +51,24 @@
                     </td>
 
                     <td>
-                       <a href="{{ route('user.edit', $user->id) }}" class="btn-edit">
+                        <a href="{{ route('user.edit', $user->id) }}" class="btn-edit">
                             <i class="fas fa-edit"></i> Ubah
                         </a>
 
-                       <form action="{{ route('user.destroy', $user->id) }}"
-                        method="POST"
-                        class="delete-form"
-                        style="display:inline">
+                        <form action="{{ route('user.destroy', $user->id) }}"
+                            method="POST"
+                            class="delete-form"
+                            style="display:inline">
 
-                        @csrf
-                        @method('DELETE')
+                            @csrf
+                            @method('DELETE')
 
-                        <button type="submit" class="btn-delete">
-                            <i class="fas fa-trash"></i>
-                            Hapus
-                        </button>
+                            <button type="submit" class="btn-delete">
+                                <i class="fas fa-trash"></i>
+                                Hapus
+                            </button>
 
-                    </form>
+                        </form>
                     </td>
                 </tr>
                 @endforeach
@@ -77,33 +76,33 @@
 
         </table>
         <div class="pagination-wrapper">
-    <div class="custom-pagination">
+            <div class="custom-pagination">
 
-    @if ($users->onFirstPage())
-        <span class="page-btn disabled">‹</span>
-    @else
-        <a href="{{ $users->previousPageUrl() }}" class="page-btn">‹</a>
-    @endif
+                @if ($users->onFirstPage())
+                <span class="page-btn disabled">‹</span>
+                @else
+                <a href="{{ $users->previousPageUrl() }}" class="page-btn">‹</a>
+                @endif
 
-    @foreach ($users->getUrlRange(1, $users->lastPage()) as $page => $url)
+                @foreach ($users->getUrlRange(1, $users->lastPage()) as $page => $url)
 
-        @if($page == $users->currentPage())
-            <span class="page-btn active">{{ $page }}</span>
-        @else
-            <a href="{{ $url }}" class="page-btn">{{ $page }}</a>
-        @endif
+                @if($page == $users->currentPage())
+                <span class="page-btn active">{{ $page }}</span>
+                @else
+                <a href="{{ $url }}" class="page-btn">{{ $page }}</a>
+                @endif
 
-    @endforeach
+                @endforeach
 
-    @if ($users->hasMorePages())
-        <a href="{{ $users->nextPageUrl() }}" class="page-btn">›</a>
-    @else
-        <span class="page-btn disabled">›</span>
-    @endif
+                @if ($users->hasMorePages())
+                <a href="{{ $users->nextPageUrl() }}" class="page-btn">›</a>
+                @else
+                <span class="page-btn disabled">›</span>
+                @endif
 
-</div>
-</div>
-       
+            </div>
+        </div>
+
 
     </div>
 
@@ -114,43 +113,42 @@
 
 <script>
     @if(session('success'))
-Swal.fire({
-    icon: 'success',
-    title: 'Berhasil',
-    text: '{{ session('success') }}',
-    timer: 2000,
-    showConfirmButton: false
-});
-@endif
-
-document.querySelectorAll('.delete-form').forEach(form => {
-
-    form.addEventListener('submit', function(e){
-
-        e.preventDefault();
-
         Swal.fire({
-            title: 'Hapus User?',
-            text: "Data yang dihapus tidak dapat dikembalikan!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#ef4444',
-            cancelButtonColor: '#6b7280',
-            confirmButtonText: 'Ya, Hapus!',
-            cancelButtonText: 'Batal'
-        }).then((result) => {
+        icon: 'success',
+        title: 'Berhasil ',
+        text: '{{ session('
+        success ') }}',
+        timer: 2000,
+        showConfirmButton: false
+    });
+    @endif
 
-            if(result.isConfirmed){
-                form.submit();
-            }
+    document.querySelectorAll('.delete-form').forEach(form => {
+
+        form.addEventListener('submit', function(e) {
+
+            e.preventDefault();
+
+            Swal.fire({
+                title: 'Hapus User?',
+                text: "Data yang dihapus tidak dapat dikembalikan!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#ef4444',
+                cancelButtonColor: '#6b7280',
+                confirmButtonText: 'Ya, Hapus!',
+                cancelButtonText: 'Batal'
+            }).then((result) => {
+
+                if (result.isConfirmed) {
+                    form.submit();
+                }
+
+            });
 
         });
 
     });
-
-});
-
-
 </script>
 
 
