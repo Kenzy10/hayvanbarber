@@ -25,7 +25,7 @@
         <h3>BARBER.ID</h3>
     </div>
 
-    <form method="POST" action="/login">
+    <form method="POST" action="{{ route('backend.auth') }}">
     @csrf
 
     @if(session('error'))

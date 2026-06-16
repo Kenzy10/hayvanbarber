@@ -21,25 +21,27 @@ class AuthController extends Controller
         return view('backend.auth.login');
     }
 
-    public function authenticate(Request $request)
-    {
-        $admin = Admin::where('email', $request->email)->first();
+   public function authenticate(Request $request)
+{
+    $request->validate([
+        'email'    => 'required|email',
+        'password' => 'required|string',
+    ]);
 
-        if (!$admin) {
-            return back()->with('error', 'Email tidak ditemukan');
-        }
+    $admin = Admin::where('email', $request->email)->first();
 
-        if (!Hash::check($request->password, $admin->password)) {
-            return back()->with('error', 'Password salah');
-        }
-
-        session([
-            'admin_id' => $admin->id,
-            'admin_name' => $admin->nama_admin,
-        ]);
-
-        return redirect('/backend/dashboard');
+    if (!$admin || !Hash::check($request->password, $admin->password)) {
+        return back()->with('error', 'Email atau password salah')->withInput();
     }
+
+    $request->session()->regenerate();
+    session([
+        'admin_id'   => $admin->id,
+        'admin_name' => $admin->nama_admin,
+    ]);
+
+    return redirect('/backend/dashboard');
+}
 
     /*
     |--------------------------------------------------------------------------
@@ -80,27 +82,20 @@ class AuthController extends Controller
     |--------------------------------------------------------------------------
     */
     public function loginCustomer(Request $request)
-    {
-        // 1. Validasi input form login dari frontend
-        $request->validate([
-            'username' => 'required|string',
-            'password' => 'required|string',
-        ]);
+{
+    $request->validate([
+        'username' => 'required|string',
+        'password' => 'required|string',
+    ]);
 
-        // 2. Cari user di tabel 'users' berdasarkan kolom 'name'
-        $user = User::where('name', $request->username)->first();
+    $user = User::where('name', $request->username)->first();
 
-        // 3. Cek apakah user ada dan password-nya benar
-        if ($user && Hash::check($request->password, $user->password)) {
-
-            // Loginkan user menggunakan Guard standar Laravel
-            Auth::login($user);
-
-            // Lempar ke halaman welcome utama pembeli
-            return redirect('/beranda');
-        }
-
-        // 4. Jika salah, kembalikan ke halaman login dan beri pesan error
-        return back()->with('error', 'Username atau Password salah!');
+    if ($user && Hash::check($request->password, $user->password)) {
+        Auth::login($user);
+        $request->session()->regenerate();
+        return redirect('/beranda');
     }
+
+    return back()->with('error', 'Username atau Password salah!')->withInput();
+}
 }

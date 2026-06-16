@@ -34,7 +34,7 @@
                     <td style="border: 1.5px solid #000; padding: 15px; text-align: center;">{{ $l->durasi }}</td>
                     <td style="border: 1.5px solid #000; padding: 15px; text-align: center; vertical-align: middle;">
                         @if($l->status == 'Aktif')
-                            <span style="background-color: #00ff1a; color: black; font-size: 12px; font-weight: bold; padding: 6px 12px; border-radius: 4px; display: inline-block;">
+                            <span style="background-color: #00ff1a; color: white; font-size: 12px; font-weight: bold; padding: 6px 12px; border-radius: 4px; display: inline-block;">
                                 Aktif
                             </span>
                         @else
@@ -43,22 +43,22 @@
                             </span>
                         @endif
                     </td>
-                    <td style="border: 1.5px solid #000; padding: 15px;">
-                        <div style="display: flex; gap: 10px;">
-                            <a href="{{ route('layanan.edit', $l->id) }}" style="background-color: #38b6ff; color: white; padding: 5px 15px; border-radius: 4px; text-decoration: none; font-size: 13px; font-weight: bold; display: inline-flex; align-items: center;">
-                                📝 Ubah
-                            </a>
+                        <td style="border: 1.5px solid #000; padding: 15px;">
+                    <div style="display: flex; gap: 10px;">
+                        <a href="45" style="background-color: #38b6ff; color: white; padding: 5px 15px; border-radius: 4px; text-decoration: none; font-size: 13px; font-weight: bold; display: inline-flex; align-items: center; gap: 6px;">
+                            <i class="fas fa-edit"></i> Ubah
+                        </a>
 
-                            <form id="delete-form-{{ $l->id }}" action="{{ route('layanan.destroy', $l->id) }}" method="POST" style="display: none;">
-                                @csrf
-                                @method('DELETE')
-                            </form>
-                            
-                            <button type="button" onclick="konfirmasiHapus('{{ $l->id }}')" style="background-color: #ff3b3b; color: white; border: none; padding: 5px 15px; border-radius: 4px; font-size: 13px; font-weight: bold; cursor: pointer;">
-                                🗑️ Hapus
-                            </button>
-                        </div>
-                    </td>
+                        <form id="delete-form-46" action="47" method="POST" style="display: none;">
+                            @csrf
+                            @method('DELETE')
+                        </form>
+
+                        <button type="button" onclick="konfirmasiHapus('48')" style="background-color: #ff3b3b; color: white; border: none; padding: 5px 15px; border-radius: 4px; font-size: 13px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 6px;">
+                            <i class="fas fa-trash"></i> Hapus
+                        </button>
+                    </div>
+                </td>
                 </tr>
                 @endforeach
             </tbody>

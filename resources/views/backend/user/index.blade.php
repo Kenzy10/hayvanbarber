@@ -12,7 +12,7 @@
     <div class="user-card">
 
         <div style="margin-bottom: 25px;">
-            <a href="{{ route('layanan.create') }}" style="background: white; border: 1.5px solid black; border-radius: 20px; padding: 6px 18px; font-size: 14px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; text-decoration: none; color: black;">
+            <a href="{{ route('user.create') }}" style="background: white; border: 1.5px solid black; border-radius: 20px; padding: 6px 18px; font-size: 14px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; text-decoration: none; color: black;">
                 <span style="font-size: 14px;">+</span> Tambah User
             </a>
         </div>

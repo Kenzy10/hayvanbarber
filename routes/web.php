@@ -84,5 +84,6 @@ Route::prefix('backend')->group(function () {
     // Manajemen Layanan & Profil Admin
     Route::resource('layanan', LayananController::class);
     Route::get('/profil', [ProfileController::class, 'index'])->name('profil.index');
-
+    Route::get('/profile/edit',    [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::put('/profile/update',  [ProfileController::class, 'update'])->name('profile.update');
 });
